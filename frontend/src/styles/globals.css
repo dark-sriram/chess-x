@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --nav-h: 62px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-cm-bg text-cm-text font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-cm-bg; }
+  ::-webkit-scrollbar-thumb { @apply bg-cm-border-l rounded; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-cm-accent-d; }
+
+  * { box-sizing: border-box; }
+}
+
+@layer components {
+  .chess-bg-pattern {
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(184,134,11,0.05) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(184,134,11,0.05) 40px);
+  }
+
+  .chess-diagonal-pattern {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 10px,
+      rgba(184,134,11,0.03) 10px, rgba(184,134,11,0.03) 11px
+    );
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:border-cm-accent hover:shadow-lg;
+    --tw-shadow: 0 8px 28px rgba(184,134,11,0.15);
+    --tw-shadow-colored: 0 8px 28px var(--tw-shadow-color);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #D4A017, #B8860B);
+  }
+
+  .glass {
+    background: rgba(22, 33, 62, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Chess board specific */
+.board-shadow {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px rgba(184,134,11,0.3);
+}
+
+/* Evaluation bar transition */
+.eval-transition {
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Range slider */
+input[type="range"] {
+  accent-color: #B8860B;
+  cursor: pointer;
+}
